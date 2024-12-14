@@ -34,4 +34,24 @@ function compareDistance(input) {
     return distance;
 }
 
-console.log(compareDistance(input));
+// Get similarity score by traversing through the col1 and finding number of times it appears in col2
+function similarityScore(input) {
+    let cols = getColumns(input);
+    let col1 = cols[0];
+    let col2 = cols[1];
+
+    let score = 0;
+
+    for (let i = 0; i < col1.length; i++) {
+        if (col2.includes(col1[i])) {
+            // find number of appearances
+            count = col2.filter(num => num === col1[i]).length;
+            score += col1[i] * count;
+        }
+    }
+
+    return score;
+}
+
+console.log('Distance: ' + compareDistance(input));
+console.log('Similarity Score: ' + similarityScore(input));
