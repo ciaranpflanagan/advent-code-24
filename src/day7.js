@@ -7,7 +7,7 @@ const input = require('fs').readFileSync('../input/day7.txt', 'utf8')
 function generateOperators (count) {
     if (count === 0) return [[]];
     const smallerCombinations = generateOperators(count - 1);
-    return smallerCombinations.flatMap(comb => [['+'].concat(comb), ['*'].concat(comb)]);
+    return smallerCombinations.flatMap(comb => [['+'].concat(comb), ['*'].concat(comb), ['|'].concat(comb)]);
 };
 
 function calc(numbers, operators) {
@@ -17,6 +17,12 @@ function calc(numbers, operators) {
             result += numbers[i + 1];
         } else if (operators[i] === '*') {
             result *= numbers[i + 1];
+        } else if (operators[i] === '|') {
+            let a = result.toString();
+            let b = numbers[i + 1].toString();
+            let c = a.concat('', b);
+
+            result = parseInt(c, 10);
         }
     }
     return result;
