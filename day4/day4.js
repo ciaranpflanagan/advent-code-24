@@ -1,5 +1,5 @@
 /**
- * Day 1: Compare distance between two sorted lists
+ * Day 4
  */
 
 const input = require('fs').readFileSync('../input/day4.txt', 'utf8')
